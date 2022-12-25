@@ -17,4 +17,5 @@ let source = process.env.DATABASE_URL;
 mongoose_1.default.connect(source)
     .then(() => app.listen(3001))
     .catch((err) => console.log(err));
+app.use(express_1.default.json());
 app.use(emoloyeeRoutes_1.default);

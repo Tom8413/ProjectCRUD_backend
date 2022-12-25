@@ -7,42 +7,31 @@ const employeeShema_1 = __importDefault(require("../models/employeeShema"));
 const viewAllUseer = (req, res) => {
     employeeShema_1.default.find()
         .then((result) => {
-        res.render('index', { title: 'All users', Users: result });
+        res.send(result);
     })
         .catch((err) => {
         console.log(err);
     });
 };
-const getIDUser = (req, res) => {
-    const id = req.params.id;
-    employeeShema_1.default.findById(id)
-        .then(result => {
-        res.render('details', { user: result, title: 'userdata' });
-    })
-        .catch(err => {
-        console.log(err);
-    });
-};
-const sendDataToUserToBrowser = (req, res) => res.render('create');
-const addUserToDataBase = (req, res) => {
+const addUserToDataBase = async (req, res) => {
     const EmployeeShema = new employeeShema_1.default({
         name: req.body.name,
         password: req.body.password,
         email: req.body.email
     });
-    EmployeeShema.save()
-        .then((result) => {
-        res.redirect('/post/system/users');
-    })
-        .catch((err) => {
-        console.log(err);
-    });
+    try {
+        const es = await EmployeeShema.save();
+        res.json(es);
+    }
+    catch (err) {
+        console.log('Error');
+    }
 };
 const deleteUser = (req, res) => {
     const id = req.params.id;
     employeeShema_1.default.findByIdAndDelete(id)
         .then(result => {
-        res.json({ redirect: '/all' });
+        res.send(result);
     })
         .catch(err => {
         console.log(err);
@@ -50,8 +39,6 @@ const deleteUser = (req, res) => {
 };
 exports.default = {
     viewAllUseer,
-    getIDUser,
     deleteUser,
-    addUserToDataBase,
-    sendDataToUserToBrowser
+    addUserToDataBase
 };
