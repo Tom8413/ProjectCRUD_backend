@@ -23,4 +23,6 @@ mongoose.connect(source)
 .then(() => app.listen(3001))
 .catch((err:string) => console.log(err));
 
+app.use(express.json());
+
 app.use(employeeRoutes);

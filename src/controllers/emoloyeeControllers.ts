@@ -18,7 +18,7 @@ const getIDUser = (req:Request, res:Response) => {
     const id = req.params.id;
     employeeShema.findById(id)
     .then(result => {
-        res.render('details', {user: result, title: 'userdata'});
+        res.send(result);
     })
     .catch(err => {
         console.log(err);
@@ -29,20 +29,20 @@ const sendDataToUserToBrowser = (req:Request, res:Response) =>
     res.render('create');
 
 
-const addUserToDataBase = (req: Request, res: Response) => {
+const addUserToDataBase = async(req: Request, res: Response) => {
     const EmployeeShema = new employeeShema({
         name: req.body.name, 
         password: req.body.password, 
         email: req.body.email
     });
     
-    EmployeeShema.save()
-    .then((result) => {
-        res.redirect('/post/system/users');
-    })
-    .catch((err) => {
-        console.log(err);
-    })
+    try{
+        const es = await EmployeeShema.save()
+        res.json(es);
+    
+    }catch(err) {
+        console.log('Error');
+    }
 
 };
 
