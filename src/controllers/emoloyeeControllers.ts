@@ -45,8 +45,6 @@ const deleteUser = (req:Request, res:Response) => {
 
 export default {
     viewAllUseer,
-    getIDUser,
     deleteUser,
-    addUserToDataBase,
-    sendDataToUserToBrowser
+    addUserToDataBase
 };
