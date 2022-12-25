@@ -1,0 +1,41 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/styles.css">
+        <title>Usersdata | <%= title %></title>
+      </head>
+
+<body>
+    <nav>
+        <div class="site-title">
+          <a href="/"><h1>Usersdata</h1></a>
+          <p>User</p>
+        </div>
+        
+    </nav>
+
+  <div class="details content">
+    <h2><%= user.name %></h2>
+    <div class="content">
+      <p><%= user.id %></p>
+    </div>
+    <a class="delete" data-doc="<%= user._id %>">delete</a>
+  
+  </div>
+    ><script>
+        const trashcan = document.querySelector('a.delete');
+
+        trashcan.addEventListener('click', (e) => {
+            const endpoint = `/users/${trashcan.dataset.doc}`;
+
+            fetch(endpoint, {
+                method: 'DELETE'
+            })
+            .then((response) => response.json())
+            .then((data) => window.location.href = data.redirect)
+            .catch((err) => console.log(err));
+        })
+    </script>
+</body>
+</html>

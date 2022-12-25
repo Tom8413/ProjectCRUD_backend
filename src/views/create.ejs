@@ -1,0 +1,30 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Blog Ninja</title>
+</head>
+
+<body>
+    <nav>
+        <div class="site-title">
+          <a href="/"><h1>Users Data Browser</h1></a>
+          <p>Add users Data </p>
+        </div>
+        
+      </nav>
+
+  <div class="create-blog content">
+    <form action="/r" method="POST">
+      <label for="name">User name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="password">password:</label>
+      <input type="text" id="password" name="password" required>
+      <label for="email">e-mail:</label>
+      <textarea id="email" required name="email" ></textarea>
+      <button>Submit</button>
+    </form>
+  </div>
+
+</body>
+</html>
