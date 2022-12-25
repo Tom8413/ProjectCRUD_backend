@@ -51,7 +51,7 @@ const deleteUser = (req:Request, res:Response) => {
 
     employeeShema.findByIdAndDelete(id)
     .then(result => {
-        res.json({redirect: '/all'});
+        res.send(result);
     })
     .catch(err => {
         console.log(err);
