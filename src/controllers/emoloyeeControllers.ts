@@ -14,21 +14,6 @@ const viewAllUseer = (req:Request, res:Response) => {
     })
 };
 
-const getIDUser = (req:Request, res:Response) => {
-    const id = req.params.id;
-    employeeShema.findById(id)
-    .then(result => {
-        res.send(result);
-    })
-    .catch(err => {
-        console.log(err);
-    })
-};
-
-const sendDataToUserToBrowser = (req:Request, res:Response) =>
-    res.render('create');
-
-
 const addUserToDataBase = async(req: Request, res: Response) => {
     const EmployeeShema = new employeeShema({
         name: req.body.name, 
