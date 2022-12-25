@@ -7,7 +7,7 @@ import mongoose from 'mongoose';
 const viewAllUseer = (req:Request, res:Response) => {
     employeeShema.find()
     .then((result) => {
-        res.render('index', {title: 'All users', Users: result });
+        res.send(result);
     })
     .catch((err) => {
         console.log(err);
