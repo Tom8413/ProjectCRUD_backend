@@ -7,10 +7,12 @@ import mongoose from 'mongoose';
 const viewAllUseer = (req:Request, res:Response) => {
     employeeShema.find()
     .then((result) => {
-        res.send(result);
+        res.status(200).send(result);
     })
     .catch((err) => {
-        console.log(err);
+        res.status(404).json({
+            message: err.message
+        });
     })
 };
 
@@ -26,7 +28,6 @@ const addUserToDataBase = async(req: Request, res: Response) => {
         res.send(200).json(es);
     
     }catch(err) {
-        //console.log('Error');
         res.status(500).send(err);
     };
 
