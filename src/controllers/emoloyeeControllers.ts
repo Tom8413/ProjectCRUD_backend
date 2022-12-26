@@ -38,11 +38,13 @@ const deleteUser = (req:Request, res:Response) => {
 
     employeeShema.findByIdAndDelete(id)
     .then(result => {
-        res.send(result);
+        res.status(200).send({message: result + "User delete succesfuly"});
     })
     .catch(err => {
-        console.log(err);
-    })
+        res.status(500).send({
+            message: err.message
+        });
+    });
 };
 
 export default {
