@@ -23,11 +23,12 @@ const addUserToDataBase = async(req: Request, res: Response) => {
     
     try{
         const es = await EmployeeShema.save()
-        res.json(es);
+        res.send(200).json(es);
     
     }catch(err) {
-        console.log('Error');
-    }
+        //console.log('Error');
+        res.status(500).send(err);
+    };
 
 };
 
