@@ -24,9 +24,9 @@ Follow these steps to create a new nodejs project with Typescript
 
 ### User:
 
-- create user : localhost:3000//post/system/users
-- update users : localhost:3000/view/system/users
-- delete user : localhost:3000/users/:id
+- create user : localhost:3001//post/system/users
+- update users : localhost:3001/view/system/users
+- delete user : localhost:3001/users/:id
 
 
  
